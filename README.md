@@ -120,12 +120,3 @@ console.log(data);
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🔗 Links
-
-- [Documentation](https://docs.calendar-assistant.com)
-- [Support](https://support.calendar-assistant.com)
-- [Terms of Service](https://terms.calendar-assistant.com)

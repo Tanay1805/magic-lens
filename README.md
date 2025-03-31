@@ -1,71 +1,131 @@
-AI-Powered Automated Calendar & Meeting Assistant API
+# Calendar Assistant API
 
-Overview
+An AI-powered automated calendar and meeting assistant to streamline scheduling and maximize productivity.
 
-This API provides smart scheduling, calendar integration, and AI-powered meeting automation to streamline event planning. It enables seamless scheduling, automated reminders, and analytics while integrating with third-party apps.
+## 🚀 Features
 
-Features
+- **Smart Scheduling**: Automatically finds the best meeting time based on participants' availability
+- **Calendar Integration**: Syncs with Google Calendar, Outlook, and other major platforms
+- **Meeting Automation**: Sends invites, reminders, and follow-ups
+- **AI-Powered Recommendations**: Suggests optimal meeting times and locations
+- **Multi-User Coordination**: Handles group scheduling conflicts
+- **Time Zone Adaptation**: Adjusts meeting times based on users' time zones
+- **Voice & Chatbot Support**: Schedule meetings via voice commands or chatbots
+- **Automated Rescheduling**: Detects conflicts and reschedules accordingly
+- **Analytics & Insights**: Provides usage stats and scheduling trends
+- **Webhooks & API Hooks**: Allows integration with third-party apps
 
-Smart Scheduling – Finds optimal meeting times based on participant availability.
+## 📋 API Documentation
 
-Calendar Integration – Syncs with Google Calendar, Outlook, and more.
+### Authentication
 
-Meeting Automation – Sends invites, reminders, and follow-ups.
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/auth/login` | POST | Authenticate user and retrieve token |
+| `/api/auth/register` | POST | Register a new user |
 
-AI-Powered Recommendations – Suggests best meeting times and locations.
+### Calendar Management
 
-Multi-User Coordination – Resolves group scheduling conflicts.
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/calendar/events` | GET | Fetch all scheduled events |
+| `/api/calendar/event` | POST | Create a new calendar event |
+| `/api/calendar/event/{id}` | PUT | Update an existing event |
+| `/api/calendar/event/{id}` | DELETE | Delete an event |
 
-Time Zone Adaptation – Adjusts meeting times dynamically.
+### Scheduling
 
-Voice & Chatbot Support – Enables scheduling via voice commands or chatbots.
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/availability` | GET | Check a user's available time slots |
+| `/api/meeting/schedule` | POST | Use AI to schedule optimal meeting times |
 
-Automated Rescheduling – Detects conflicts and reschedules accordingly.
+### Integrations
 
-Analytics & Insights – Provides data-driven scheduling trends.
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/meeting/integrations` | GET | List available third-party integrations |
+| `/api/meeting/webhook` | POST | Set up webhook notifications |
 
-Webhooks & API Hooks – Enables seamless third-party integrations.
+### Analytics
 
-API Endpoints
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/analytics` | GET | Retrieve scheduling insights and analytics |
 
-Authentication
+## 🛠️ Getting Started
 
-POST /api/auth/login – User authentication.
+### Prerequisites
 
-POST /api/auth/register – User registration.
+- Node.js v14+ or Python 3.8+
+- API key for calendar service integrations
 
-Calendar Management
+### Configuration
 
-GET /api/calendar/events – Fetches scheduled events.
+Create a `.env` file with the following configurations:
 
-POST /api/calendar/event – Creates a new event.
+```
+API_KEY=your_api_key
+PORT=3000
+DATABASE_URL=your_database_connection_string
+```
 
-PUT /api/calendar/event/{id} – Updates an existing event.
+### Running the API
 
-DELETE /api/calendar/event/{id} – Deletes an event.
+```bash
+# Development mode
+npm run dev
+# or
+python app.py
 
-Scheduling & Availability
+# Production mode
+npm start
+```
 
-GET /api/availability – Checks a user’s available time slots.
+## 🔐 Authentication
 
-POST /api/meeting/schedule – AI-powered meeting scheduling.
+All API endpoints require authentication. Use the `/api/auth/login` endpoint to obtain a JWT token, then include it in the Authorization header for subsequent requests:
 
-Integrations & Webhooks
+```
+Authorization: Bearer your_token_here
+```
 
-GET /api/meeting/integrations – Lists available third-party integrations.
+## 📚 Example Usage
 
-POST /api/meeting/webhook – Sets up webhook notifications.
+### Scheduling a Meeting
 
-Analytics
+```javascript
+const response = await fetch('https://api.calendar-assistant.com/api/meeting/schedule', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer your_token_here'
+  },
+  body: JSON.stringify({
+    title: 'Project Review',
+    duration: 60, // minutes
+    participants: ['user1@example.com', 'user2@example.com'],
+    preferred_time_ranges: [
+      { start: '2025-04-01T09:00:00Z', end: '2025-04-01T17:00:00Z' },
+      { start: '2025-04-02T09:00:00Z', end: '2025-04-02T17:00:00Z' }
+    ]
+  })
+});
 
-GET /api/analytics – Provides scheduling insights and analytics.
+const data = await response.json();
+console.log(data);
+```
 
-Getting Started
+## 🤝 Contributing
 
-Prerequisites
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Node.js / Python / Your preferred backend framework.
+## 📄 License
 
-Database (PostgreSQL, MongoDB, etc.).
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-API keys for Google Calendar and other integrations.
+## 🔗 Links
+
+- [Documentation](https://docs.calendar-assistant.com)
+- [Support](https://support.calendar-assistant.com)
+- [Terms of Service](https://terms.calendar-assistant.com)
